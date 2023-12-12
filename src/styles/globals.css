@@ -28,3 +28,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+/* About section background */
+#about{
+  background: linear-gradient(230deg, #b0bbc0 -40%, #111425 100%);
+}

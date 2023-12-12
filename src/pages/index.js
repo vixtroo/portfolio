@@ -17,20 +17,20 @@ export default function Home() {
     <>
       <Navbar />
       <MainContainer className='mt-20'>
-            <section className='flex flex-wrap content-center justify-center w-full h-auto px-24 gap-x-20 ' id='about'>
+      <section className="flex flex-wrap content-center justify-center w-full h-auto px-24 pb-24 pt-18 gap-x-20" id='about'>
                 <div className="flex flex-wrap content-center justify-between mt-32 w-96">
-                    <div className="flex flex-col justify-center">
+                    <div className="flex flex-col justify-center mt-6 text-neutral-200">
                         <h1 className="font-mono font-semibold text-8xl">Vincent Castro</h1>
                         <h2 className="font-mono text-4xl ">Frontend Developer</h2>
                         <p className="font-mono text-xl">2000-present</p>
                     </div>
                 </div>
-                <div className="flex flex-wrap content-center justify-center mt-32">
-                    <Image src={Profile} width={400} height={400} className="rounded-full grayscale-[100%] hover:grayscale-[0%] transition-all duration-500 ease-in-out" alt="Profile Photo"/>
+                <div className="flex flex-wrap content-center justify-center mt-40">
+                    <Image src={Profile} width={400} height={400} className="rounded-full grayscale-[100%] hover:grayscale-[0%] transition-all duration-500 ease-in-out drop-shadow-2xl" alt="Profile Photo"/>
                 </div>
             </section>  
-            <section className='flex flex-col items-center w-full h-auto px-24' id='experience'>
-                <div className="mt-24 mb-10 font-mono text-4xl">
+            <section className='flex flex-col items-center w-full h-auto px-24 text-zinc-700' id='experience'>
+                <div className="flex justify-center w-full my-20 font-mono text-4xl font-semibold">
                     Experience
                 </div>
                 <div  className="flex flex-wrap content-center justify-center w-full">
