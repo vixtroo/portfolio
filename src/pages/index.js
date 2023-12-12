@@ -39,7 +39,7 @@ export default function Home() {
       document.body.removeChild(link)
     }
   };
-  
+
   return (
     <>
       <Navbar />
