@@ -4,7 +4,7 @@ import MainContainer from '@containers/MainContainer'
 import Image from "next/image"
 import Profile from '@assets/Profile 2.jpg'
 import Safe from '@assets/safe.png'
-import Ahg from '@assets/Ahg.png'
+import Ahg from '@assets/ahg.png'
 
 export default function Home() {
 
