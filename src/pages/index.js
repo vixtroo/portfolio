@@ -5,6 +5,9 @@ import Image from "next/image"
 import Profile from '@assets/Profile 2.jpg'
 import Safe from '@assets/safe.png'
 import Ahg from '@assets/ahg.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowTrendUp } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react'
 
 export default function Home() {
 
@@ -12,6 +15,30 @@ export default function Home() {
     {company: 'Safe - Midman App', position: 'Frontend Developer | Part-time', date: 'November 2023 - December 2023', img: Safe, alt: 'Safe Logo'},
     {company: 'AHG Lab', position: 'Frontend Web Developer | Intern', date: 'March 2023 - June 2023', img: Ahg, alt: 'AHG Lab Logo'}
   ]
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const [downloaded, setDownloaded] = useState(false);
+
+  const handleDownload = () => {
+
+    if (!downloaded) {
+      setDownloaded(true)
+
+      const link = document.createElement('a')
+      link.href = '/RegistrationCertificate_4Y2S.pdf'
+      link.download = 'resume.pdf'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    }
+  };
   
   return (
     <>
@@ -19,10 +46,14 @@ export default function Home() {
       <MainContainer className='mt-20'>
       <section className="flex flex-wrap content-center justify-center w-full h-auto px-24 pb-24 pt-18 gap-x-20" id='about'>
                 <div className="flex flex-wrap content-center justify-between mt-32 w-96">
-                    <div className="flex flex-col justify-center mt-6 text-neutral-200">
-                        <h1 className="font-mono font-semibold text-8xl">Vincent Castro</h1>
-                        <h2 className="font-mono text-4xl ">Frontend Developer</h2>
-                        <p className="font-mono text-xl">2000-present</p>
+                    <div className="flex flex-col justify-center mt-6 font-mono text-neutral-200">
+                        <h1 className="font-semibold text-8xl">Vincent Castro</h1>
+                        <h2 className="text-4xl ">Frontend Developer</h2>
+                        <p className="text-xl">2000-present</p>
+                        <div className='flex flex-wrap content-center justify-start w-full gap-2 mt-2'>
+                          <button className='flex flex-wrap content-center justify-center h-10 px-4 duration-100 delay-100 bg-blue-300 border-2 hover:border-blue-300 hover:bg-slate-900 hover:text-neutral-200 border-neutral-200 rounded-xl text-zinc-900' onClick={handleDownload}>{downloaded ? 'Resume Downloaded!' : 'Download Resume'}</button>
+                          <button className='flex flex-wrap content-center justify-center h-10 px-4 rounded-xl text-neutral-200' onClick={scrollToContact}>Contact me <span className='ml-2'><FontAwesomeIcon icon={faArrowTrendUp}/></span></button>
+                        </div>
                     </div>
                 </div>
                 <div className="flex flex-wrap content-center justify-center mt-40">
