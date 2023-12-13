@@ -51,7 +51,7 @@ export default function Home() {
                         <h2 className="text-4xl ">Frontend Developer</h2>
                         <p className="text-xl">2000-present</p>
                         <div className='flex flex-wrap content-center justify-start w-full gap-2 mt-2'>
-                          <button className='flex flex-wrap content-center justify-center h-10 px-4 duration-100 delay-100 bg-blue-300 border-2 hover:border-blue-300 hover:bg-slate-900 hover:text-neutral-200 border-neutral-200 rounded-xl text-zinc-900' onClick={handleDownload}>{downloaded ? 'Resume Downloaded!' : 'Download Resume'}</button>
+                          <button className='flex flex-wrap content-center justify-center h-10 px-4 duration-100 delay-100 border-2 border-blue-300 hover:bg-blue-300 bg-slate-900 text-neutral-200 hover:border-neutral-200 rounded-xl hover:text-zinc-900' onClick={handleDownload}>{downloaded ? 'Resume Downloaded!' : 'Download Resume'}</button>
                           <button className='flex flex-wrap content-center justify-center h-10 px-4 rounded-xl text-neutral-200' onClick={scrollToContact}>Contact me <span className='ml-2'><FontAwesomeIcon icon={faArrowTrendUp}/></span></button>
                         </div>
                     </div>
