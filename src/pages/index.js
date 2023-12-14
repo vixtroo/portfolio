@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <MainContainer className='mt-20'>
+      <MainContainer>
       <section className="flex flex-wrap content-center justify-center w-full h-auto px-24 pb-24 pt-18 gap-x-20" id='about'>
                 <div className="flex flex-wrap content-center justify-between mt-32 w-96">
                     <div className="flex flex-col justify-center mt-6 font-mono text-neutral-200">
@@ -77,8 +77,8 @@ export default function Home() {
                     ))}
                 </div>
             </section>  
-            <section className='w-full h-96' id='projects'></section>  
-            <section className='w-full h-96' id='contact'></section> 
+            <section className='w-full h-[500px]' id='projects'></section>  
+            <section className='w-full h-[500px]' id='contact'></section> 
       </MainContainer>
     </>
   )

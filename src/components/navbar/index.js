@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const Navbar = () => {
 
@@ -17,6 +17,39 @@ const Navbar = () => {
     ]
 
     const [activeNav, setActiveNav] = useState("")
+
+    useEffect(() => {
+        // Function to handle scroll events
+        const handleScroll = () => {
+          const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
+          // Calculate the position of each section and set the activeNav accordingly
+          const sections = navLinks.map(({ title, link }) => {
+            const targetElement = document.querySelector(link);
+            return {
+              title,
+              offsetTop: targetElement ? targetElement.offsetTop - 50 : 0,
+              offsetBottom: targetElement ? targetElement.offsetTop + targetElement.offsetHeight - 50: 0
+            };
+          });
+    
+          const currentSection = sections.find(section => (
+            scrollPosition >= section.offsetTop && scrollPosition < section.offsetBottom
+          ));
+          if (!document.activeElement || !document.activeElement.classList.contains("nav-link-clicked")) {
+            setActiveNav(currentSection ? currentSection.title : "");
+          }
+        };
+    
+        // Attach the scroll event listener
+        window.addEventListener("scroll", handleScroll);
+    
+        // Clean up the event listener on component unmount
+        return () => {
+          window.removeEventListener("scroll", handleScroll);
+        };
+      }, [navLinks]);
+    
 
     return(
         <div className="fixed z-10 flex flex-wrap content-center justify-between w-full h-20 px-24 mb-10 border-b border-blue-300 bg-slate-900">
