@@ -1,51 +1,37 @@
 import Navbar from '@components/navbar'
+import Footer from '@components/footer'
 import HomePage from '@containers/HomePageContainer'
 import MainContainer from '@containers/MainContainer'
 import Image from "next/image"
 import Profile from '@assets/Profile 2.jpg'
-import Safe from '@assets/safe.png'
-import Ahg from '@assets/ahg.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowTrendUp } from '@fortawesome/free-solid-svg-icons';
+import { faArrowTrendUp} from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react'
+import { experience, scrollToContact, info} from '@utils/indexUtils'
 
 export default function Home() {
 
-  const experience = [
-    {company: 'Safe - Midman App', position: 'Frontend Developer | Part-time', date: 'November 2023 - December 2023', img: Safe, alt: 'Safe Logo'},
-    {company: 'AHG Lab', position: 'Frontend Web Developer | Intern', date: 'March 2023 - June 2023', img: Ahg, alt: 'AHG Lab Logo'}
-  ]
-
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const [downloaded, setDownloaded] = useState(false);
+  
+ const handleDownload = () => {
 
-  const handleDownload = () => {
+  if (!downloaded) {
+    setDownloaded(true)
 
-    if (!downloaded) {
-      setDownloaded(true)
-
-      const link = document.createElement('a')
-      link.href = '/RegistrationCertificate_4Y2S.pdf'
-      link.download = 'resume.pdf'
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-    }
-  };
-
+    const link = document.createElement('a')
+    link.href = '/updatedResume.pdf'
+    link.download = 'resume.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+};
   return (
-    <>
+    <div className='flex md:block'>
       <Navbar />
       <MainContainer>
-      <section className="flex flex-wrap content-center justify-center w-full h-auto px-24 pb-24 pt-18 gap-x-20" id='about'>
-                <div className="flex flex-wrap content-center justify-between mt-32 w-96">
+      <section className="flex flex-col-reverse flex-wrap content-center justify-center w-full h-auto px-24 pb-24 md:flex-row pt-18 gap-x-20" id='about'>
+                <div className="flex flex-wrap content-center justify-between md-20 md:mt-32 w-96">
                     <div className="flex flex-col justify-center mt-6 font-mono text-neutral-200">
                         <h1 className="font-semibold text-8xl">Vincent Castro</h1>
                         <h2 className="text-4xl ">Frontend Developer</h2>
@@ -64,7 +50,7 @@ export default function Home() {
                 <div className="flex justify-center w-full my-20 font-mono text-4xl font-semibold">
                     Experience
                 </div>
-                <div  className="flex flex-wrap content-center justify-center w-full">
+                <div  className="flex flex-col flex-wrap content-center justify-center w-full md:flex-row gap-y-10">
                     {experience.map((experience, index)=>(
                         <div className="flex flex-col items-center h-[450px] mx-10 border-2 w-96 border-slate-500 rounded-xl" key={index}>
                             <div className='flex flex-wrap content-center justify-center h-64'>
@@ -76,10 +62,34 @@ export default function Home() {
                         </div>
                     ))}
                 </div>
-            </section>  
-            <section className='w-full h-[500px]' id='projects'></section>  
-            <section className='w-full h-[500px]' id='contact'></section> 
+            </section>   
+            <section className='flex flex-col items-center justify-between w-full text-zinc-700 h-[500px]' id='projects'>
+                <div className='flex justify-center w-full my-20 font-mono text-4xl font-semibold'>
+                  Projects
+                </div>
+            </section>
+            <section className='flex flex-col items-center justify-between w-full font-mono text-zinc-700' id='contact'>
+                <div className='flex justify-center w-full my-20 text-4xl font-semibold'>
+                  Contact
+                </div>
+                <div  className="flex flex-col flex-wrap content-center justify-center w-full mb-20 md:flex-row gap-y-10">
+                        <div className="flex flex-col items-center h-[450px] mx-10 border-2 w-96 border-slate-500 rounded-xl">
+                            
+                        </div>
+                        <div className="flex flex-col items-center h-[450px] mx-10 w-96">
+                            <h1 className='px-10 font-mono text-lg font-semibold border-b-2'>Get in touch</h1>
+                            <div className='flex flex-wrap content-start justify-start w-full px-12'>
+                              <ul className='mt-4 leading-8'>
+                                {info.map((info, index)=>(
+                                  <li key={index} className='flex'><FontAwesomeIcon icon={info.icon} className='h-10 p-4 mt-2 border rounded-full'/><p className='mt-3.5 ml-4'>{info.info}</p></li>
+                                ))}
+                              </ul>
+                            </div>
+                        </div>
+                </div>
+            </section> 
       </MainContainer>
-    </>
+      <Footer/>
+    </div>
   )
 }

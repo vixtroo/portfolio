@@ -1,14 +1,14 @@
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 
 const Navbar = () => {
 
-    const navLinks = [
-        {title: 'About', link: '#about'},
-        {title: 'Experience', link: '#experience'},
-        {title: 'Projects', link: '#projects'},
-        {title: 'Contact', link: '#contact'} 
-    ]
+    const navLinks = useMemo(() => [
+        { title: 'About', link: '#about' },
+        { title: 'Experience', link: '#experience' },
+        { title: 'Projects', link: '#projects' },
+        { title: 'Contact', link: '#contact' }
+    ], []);
     
     const socialIcons = [
         {link: 'https://www.facebook.com/vincentxpatrick/', class: 'hover:bg-blue-300', d: 'M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z', className: 'h-7 w-7'},
@@ -55,7 +55,7 @@ const Navbar = () => {
         <div className="fixed z-10 flex flex-wrap content-center justify-between w-full h-20 px-24 mb-10 border-b border-blue-300 bg-slate-900">
             <div className="flex flex-wrap content-center justify-center h-full font-mono text-4xl font-semibold text-blue-300"><a href='#'>Vixtro</a></div>
             <div className="flex flex-wrap content-center justify-center h-full">
-                <ul className="flex items-center h-full gap-6">
+                <ul className="items-center hidden h-full gap-6 md:flex">
                     {navLinks.map(({ title, link }) => {
                     return (
                         <li className={`relative block w-full h-full px-2 duration-100 delay-100 hover:border-b-2 ${activeNav == title? 'border-b-2' : ''}`} key={title}>
