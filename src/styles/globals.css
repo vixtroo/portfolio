@@ -33,3 +33,11 @@ body {
 #about{
   background: linear-gradient(230deg, #b0bbc0 -40%, #111425 100%);
 }
+
+/* Contact section */
+#contact input, button{
+  width: 280px;
+  height: 50px;
+  padding: 15px;
+  border-radius: 12px;
+}
