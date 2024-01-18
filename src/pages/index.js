@@ -7,7 +7,7 @@ import Profile from '@assets/Profile 2.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowTrendUp, faUser, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react'
-import { experience, scrollToContact, info} from '@utils/indexUtils'
+import { experience, scrollToContact, info } from '@utils/indexUtils'
 
 export default function Home() {
 
@@ -86,7 +86,7 @@ export default function Home() {
                                   <input type="text" id="email" placeholder="Email" style={{ paddingLeft: '40px' }}/>
                                   <FontAwesomeIcon icon={faEnvelope} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color:'gray'}}/>
                                 </label>
-                                <textarea placeholder="Message" id="w3review" name="w3review" rows="4" cols="30" className='w-[280px] pl-3 py-[15px] rounded-xl'></textarea>
+                                <textarea placeholder="Message" id="message" name="message" rows="4" cols="30" className='w-[280px] pl-3 py-[15px] rounded-xl'></textarea>
                                 <button className='flex flex-wrap content-center justify-center duration-100 delay-100 border-2 border-blue-300 hover:bg-blue-300 bg-slate-900 text-neutral-200 hover:border-slate-800 rounded-xl hover:text-zinc-900' type='submit'>Send Message</button>
                               </div>
                           </div>
