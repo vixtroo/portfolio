@@ -19,7 +19,7 @@ export default function Home() {
     setDownloaded(true)
 
     const link = document.createElement('a')
-    link.href = '/updatedResume.pdf'
+    link.href = '/CASTRO, Vincent Patrick - Resume.pdf'
     link.download = 'resume.pdf'
     document.body.appendChild(link)
     link.click()
