@@ -42,6 +42,15 @@ body {
   border-radius: 12px;
 }
 
+#contact input, textarea{
+  outline: 1px solid slategray;
+}
+
+#contact input:focus, textarea:focus{
+  outline: 2px solid rgb(15 23 42);
+}
+
+/* Sections Fade-in fx */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -57,13 +66,8 @@ body {
   animation: fadeIn 1s ease-in-out;
 }
 
-/* .fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
+/* Experience */
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-} */
+.exp-card:hover .exp-image{
+  rotate: 360deg;
+}

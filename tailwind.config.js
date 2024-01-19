@@ -15,6 +15,9 @@ module.exports = {
       grayscale: {
         50: '50%',
         100: '100%'
+      },
+      rotate: {
+        '360': '360deg'
       }
     },
   },

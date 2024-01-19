@@ -11,9 +11,9 @@ import { experience, scrollToContact, info } from '@utils/indexUtils'
 
 export default function Home() {
 
-  const [downloaded, setDownloaded] = useState(false);
+const [downloaded, setDownloaded] = useState(false);
   
- const handleDownload = () => {
+const handleDownload = () => {
 
   if (!downloaded) {
     setDownloaded(true)
@@ -25,30 +25,26 @@ export default function Home() {
     link.click()
     document.body.removeChild(link)
   }
-};
+}
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = document.querySelectorAll('[data-scroll]');
+      const sections = document.querySelectorAll('[data-scroll]')
   
       sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+        const rect = section.getBoundingClientRect()
+        const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0
   
         if (isVisible) {
-          // Add the fade-in class when the section is visible
-          section.classList.add('fade-in');
+          section.classList.add('fade-in')
         } else {
-          // Remove the fade-in class if the section is not visible
-          section.classList.remove('fade-in');
+          section.classList.remove('fade-in')
         }
-      });
-    };
-  
-    // Attach the scroll event listener
+      })
+    }
+
     window.addEventListener('scroll', handleScroll);
-  
-    // Cleanup on component unmount
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -80,9 +76,9 @@ export default function Home() {
                 </div>
                 <div  className="flex flex-col flex-wrap content-center justify-center w-full md:flex-row gap-y-10">
                     {experience.map((experience, index)=>(
-                        <div className="flex flex-col items-center h-[450px] mx-10 border-2 w-96 border-slate-500 rounded-xl" key={index}>
+                        <div className="flex flex-col items-center h-[450px] mx-10 border-2 w-96 border-slate-500 rounded-xl hover:scale-105 duration-75 exp-card" key={index}>
                             <div className='flex flex-wrap content-center justify-center h-64'>
-                              <Image src={experience.img} width={250} height={250} alt={experience.alt}/>
+                              <Image src={experience.img} width={250} height={250} alt={experience.alt} className='duration-200 exp-image'/>
                             </div>
                             <h3 className='font-mono text-xl font-semibold'>{experience.company}</h3>
                             <p className='mt-2 font-mono'>{experience.position}</p>
@@ -107,11 +103,11 @@ export default function Home() {
                               <div className='flex flex-col content-center justify-center p-4 gap-y-4'>
                                 <label htmlFor="name" style={{ position: 'relative' }}>
                                   <input type="text" id="name" placeholder="Name" style={{ paddingLeft: '40px' }}/>
-                                  <FontAwesomeIcon icon={faUser} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color:'gray'}}/>
+                                  <FontAwesomeIcon icon={faUser} style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color:'gray'}}/>
                                 </label>
                                 <label htmlFor="email" style={{ position: 'relative' }}>
                                   <input type="text" id="email" placeholder="Email" style={{ paddingLeft: '40px' }}/>
-                                  <FontAwesomeIcon icon={faEnvelope} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color:'gray'}}/>
+                                  <FontAwesomeIcon icon={faEnvelope} style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color:'gray'}}/>
                                 </label>
                                 <textarea placeholder="Message" id="message" name="message" rows="4" cols="30" className='w-[280px] pl-3 py-[15px] rounded-xl'></textarea>
                                 <button className='flex flex-wrap content-center justify-center duration-100 delay-100 border-2 border-blue-300 hover:bg-blue-300 bg-slate-900 text-neutral-200 hover:border-slate-800 rounded-xl hover:text-zinc-900' type='submit'>Send Message</button>
