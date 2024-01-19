@@ -6,7 +6,7 @@ import Image from "next/image"
 import Profile from '@assets/Profile 2.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowTrendUp, faUser, faEnvelope} from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { experience, scrollToContact, info } from '@utils/indexUtils'
 
 export default function Home() {
@@ -27,11 +27,38 @@ export default function Home() {
   }
 };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll('[data-scroll]');
+  
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+  
+        if (isVisible) {
+          // Add the fade-in class when the section is visible
+          section.classList.add('fade-in');
+        } else {
+          // Remove the fade-in class if the section is not visible
+          section.classList.remove('fade-in');
+        }
+      });
+    };
+  
+    // Attach the scroll event listener
+    window.addEventListener('scroll', handleScroll);
+  
+    // Cleanup on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className='flex md:block'>
       <Navbar />
       <MainContainer>
-            <section className="flex flex-col-reverse flex-wrap content-center justify-center w-full h-auto px-24 pb-24 md:flex-row pt-18 gap-x-20" id='about'>
+            <section className="flex flex-col-reverse flex-wrap content-center justify-center w-full h-auto px-24 pb-24 md:flex-row pt-18 gap-x-20 fade-in" id='about' data-scroll>
                 <div className="flex flex-wrap content-center justify-between md-20 md:mt-32 w-96">
                     <div className="flex flex-col justify-center mt-6 font-mono text-neutral-200">
                         <h1 className="font-semibold text-8xl">Vincent Castro</h1>
@@ -47,7 +74,7 @@ export default function Home() {
                     <Image src={Profile} width={400} height={400} className="rounded-full grayscale-[100%] hover:grayscale-[0%] transition-all duration-500 ease-in-out drop-shadow-2xl" alt="Profile Photo"/>
                 </div>
             </section>  
-            <section className='flex flex-col items-center w-full h-auto px-24 text-zinc-700' id='experience'>
+            <section className='flex flex-col items-center w-full h-auto px-24 text-zinc-700 fade-in' id='experience' data-scroll>
                 <div className="flex justify-center w-full my-20 font-mono text-4xl font-semibold">
                     Experience
                 </div>
@@ -64,12 +91,12 @@ export default function Home() {
                     ))}
                 </div>
             </section>   
-            <section className='flex flex-col items-center justify-between w-full text-zinc-700 h-[500px]' id='projects'>
+            <section className='flex flex-col items-center justify-between w-full text-zinc-700 h-[500px] fade-in' id='projects' data-scroll>
                 <div className='flex justify-center w-full my-20 font-mono text-4xl font-semibold'>
                   Projects
                 </div>
             </section>
-            <section className='flex flex-col items-center justify-between w-full font-mono text-zinc-700' id='contact'>
+            <section className='flex flex-col items-center justify-between w-full font-mono text-zinc-700 fade-in' id='contact' data-scroll>
                 <div className='flex justify-center w-full my-20 text-4xl font-semibold'>
                   Contact
                 </div>
