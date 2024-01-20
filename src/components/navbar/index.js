@@ -87,7 +87,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <Menu>
-                <Menu.Button className='w-10'><FontAwesomeIcon icon={faBars} style={{fontSize: '40px', color:'white'}}/></Menu.Button>
+                <Menu.Button className='flex w-10 md:hidden'><FontAwesomeIcon icon={faBars} style={{fontSize: '40px', color:'white'}}/></Menu.Button>
                     <Menu.Items className='absolute flex flex-col w-full bg-white top-20'>
                         <Menu.Item>
                         {({ active }) => (
