@@ -6,7 +6,7 @@ import Image from "next/image"
 import Profile from '@assets/Profile 2.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowTrendUp, faUser, faEnvelope} from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { experience, scrollToContact, info } from '@utils/indexUtils'
 
 export default function Home() {

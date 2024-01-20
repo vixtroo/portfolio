@@ -1,5 +1,8 @@
 import Link from "next/link"
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect, useMemo, Fragment } from "react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { Menu } from "@headlessui/react";
 
 const Navbar = () => {
 
@@ -49,10 +52,9 @@ const Navbar = () => {
           window.removeEventListener("scroll", handleScroll);
         };
       }, [navLinks]);
-    
-
+      
     return(
-        <div className="fixed z-10 flex flex-wrap content-center justify-between w-full h-20 px-24 mb-10 border-b border-blue-300 bg-slate-900">
+        <div className="fixed z-10 flex flex-wrap content-center justify-between w-full h-20 px-10 mb-10 border-b border-blue-300 md:px-24 bg-slate-900">
             <div className="flex flex-wrap content-center justify-center h-full font-mono text-4xl font-semibold text-blue-300"><a href='#'>Vixtro</a></div>
             <div className="flex flex-wrap content-center justify-center h-full">
                 <ul className="items-center hidden h-full gap-6 md:flex">
@@ -71,7 +73,7 @@ const Navbar = () => {
                     })}
                 </ul>
             </div>
-            <div className="flex flex-wrap content-center justify-center w-auto h-full gap-6 py-6">
+            <div className="flex-wrap content-center justify-center hidden h-full gap-6 py-6 md:flex">
                 <ul className="flex inline gap-x-2">
                     {socialIcons.map((socialIcon, index)=>(
                         <li key={index} className={`flex flex-wrap content-center justify-center w-12 h-12 rounded-full bg-slate-500 delay-100 ${socialIcon.class} cursor-pointer duration-100`}>
@@ -84,6 +86,34 @@ const Navbar = () => {
                     ))}
                 </ul>
             </div>
+            <Menu>
+                <Menu.Button className='w-10'><FontAwesomeIcon icon={faBars} style={{fontSize: '40px', color:'white'}}/></Menu.Button>
+                    <Menu.Items className='absolute flex flex-col w-full bg-white top-20'>
+                        <Menu.Item>
+                        {({ active }) => (
+                            <a
+                            className={`${active && 'bg-blue-500'}`}
+                            href="/account-settings"
+                            >
+                            Account settings
+                            </a>
+                        )}
+                        </Menu.Item>
+                        <Menu.Item>
+                        {({ active }) => (
+                            <a
+                            className={`${active && 'bg-blue-500'}`}
+                            href="/account-settings"
+                            >
+                            Documentation
+                            </a>
+                        )}
+                        </Menu.Item>
+                        <Menu.Item disabled>
+                        <span className="opacity-75">Invite a friend (coming soon!)</span>
+                        </Menu.Item>
+                </Menu.Items>
+            </Menu>
         </div>
     )
 }
