@@ -88,31 +88,22 @@ const Navbar = () => {
             </div>
             <Menu>
                 <Menu.Button className='flex w-10 md:hidden'><FontAwesomeIcon icon={faBars} style={{fontSize: '40px', color:'white'}}/></Menu.Button>
-                    <Menu.Items className='absolute flex flex-col w-full bg-white top-20'>
-                        <Menu.Item>
-                        {({ active }) => (
-                            <a
-                            className={`${active && 'bg-blue-500'}`}
-                            href="/account-settings"
-                            >
-                            Account settings
-                            </a>
-                        )}
-                        </Menu.Item>
-                        <Menu.Item>
-                        {({ active }) => (
-                            <a
-                            className={`${active && 'bg-blue-500'}`}
-                            href="/account-settings"
-                            >
-                            Documentation
-                            </a>
-                        )}
-                        </Menu.Item>
-                        <Menu.Item disabled>
-                        <span className="opacity-75">Invite a friend (coming soon!)</span>
-                        </Menu.Item>
-                </Menu.Items>
+                    <Menu.Items className='absolute left-0 flex flex-col w-full py-4 pl-10 bg-white top-20 leading-12'>
+                        {navLinks.map(({title, link})=>{
+                            return(
+                                <Menu.Item key={title}>
+                                    {({ active }) => (
+                                        <a
+                                        className='text-xl'
+                                        href={`${link}`}
+                                        >
+                                        {title}
+                                        </a>
+                                    )}
+                                </Menu.Item>
+                            )
+                        })}
+                    </Menu.Items>
             </Menu>
         </div>
     )
