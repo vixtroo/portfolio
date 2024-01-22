@@ -1,8 +1,8 @@
 import Link from "next/link"
-import { useState, useEffect, useMemo, Fragment } from "react"
+import { useState, useEffect, useMemo, React } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Menu } from "@headlessui/react";
+import { Menu, Transition} from "@headlessui/react";
 
 const Navbar = () => {
 
@@ -22,11 +22,9 @@ const Navbar = () => {
     const [activeNav, setActiveNav] = useState("")
 
     useEffect(() => {
-        // Function to handle scroll events
         const handleScroll = () => {
           const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-    
-          // Calculate the position of each section and set the activeNav accordingly
+
           const sections = navLinks.map(({ title, link }) => {
             const targetElement = document.querySelector(link);
             return {
@@ -44,10 +42,8 @@ const Navbar = () => {
           }
         };
     
-        // Attach the scroll event listener
         window.addEventListener("scroll", handleScroll);
     
-        // Clean up the event listener on component unmount
         return () => {
           window.removeEventListener("scroll", handleScroll);
         };
@@ -87,23 +83,31 @@ const Navbar = () => {
                 </ul>
             </div>
             <Menu>
-                <Menu.Button className='flex w-10 md:hidden'><FontAwesomeIcon icon={faBars} style={{fontSize: '40px', color:'white'}}/></Menu.Button>
-                    <Menu.Items className='absolute left-0 flex flex-col w-full py-4 pl-10 bg-white top-20 leading-12'>
-                        {navLinks.map(({title, link})=>{
-                            return(
-                                <Menu.Item key={title}>
-                                    {({ active }) => (
-                                        <a
-                                        className='text-xl'
-                                        href={`${link}`}
-                                        >
-                                        {title}
-                                        </a>
-                                    )}
-                                </Menu.Item>
-                            )
-                        })}
-                    </Menu.Items>
+            <Menu.Button className="flex w-10 md:hidden"><FontAwesomeIcon icon={faBars} style={{ fontSize: "40px", color: "white" }} /></Menu.Button>
+                <Menu.Items className="absolute left-0 flex flex-col w-full py-4 pl-10 bg-white top-20">
+                {navLinks.map(({ title, link }) => (
+                    <Menu.Item key={title} className="mb-4 font-semibold text-zinc-700">
+                    {({ active }) => (
+                        <a className="text-2xl" href={`${link}`}>
+                        {title}
+                        </a>
+                    )}
+                    </Menu.Item>
+                ))}
+                <Menu.Item>
+                <ul className="flex inline gap-x-2">
+                    {socialIcons.map((socialIcon, index)=>(
+                        <li key={index} className={`flex flex-wrap content-center justify-center w-12 h-12 rounded-full bg-slate-500 delay-100 ${socialIcon.class} cursor-pointer duration-100`}>
+                            <Link href={socialIcon.link} className={`social-icons ${socialIcon.class} delay-100 duration-100`} target="blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" className={socialIcon.className} fill="white" viewBox="0 0 24 24">
+                                    <path transform={socialIcon.transform} d={socialIcon.d} />
+                                </svg>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+                </Menu.Item>
+                </Menu.Items>
             </Menu>
         </div>
     )
