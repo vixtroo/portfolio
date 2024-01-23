@@ -65,7 +65,7 @@ export default function Home() {
               <p className="text-xl">2000-present</p>
               <div className="flex flex-wrap content-center justify-center w-full gap-2 mt-4 md:justify-start">
                 <button
-                  className="flex flex-wrap content-center justify-center h-12 px-4 duration-100 delay-100 border-2 border-blue-300 hover:bg-blue-300 bg-slate-900 text-neutral-200 hover:border-neutral-200 rounded-xl hover:text-zinc-900"
+                  className="flex flex-wrap content-center justify-center h-12 px-4 duration-100 border-2 border-blue-300 hover:bg-blue-300 bg-slate-900 text-neutral-200 hover:border-neutral-200 rounded-xl hover:text-zinc-900"
                   onClick={handleDownload}
                 >
                   {downloaded ? "Resume Downloaded!" : "Download Resume"}

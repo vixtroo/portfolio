@@ -108,7 +108,7 @@ const ContactForm = () => {
             />
           </label>
           <button
-            className="flex flex-wrap content-center justify-center duration-100 delay-100 border-2 border-blue-300 hover:bg-blue-300 bg-slate-900 text-neutral-200 hover:border-slate-800 rounded-xl hover:text-zinc-900"
+            className="flex flex-wrap content-center justify-center duration-100 border-2 border-blue-300 hover:bg-blue-300 bg-slate-900 text-neutral-200 hover:border-slate-800 rounded-xl hover:text-zinc-900"
             type="submit"
           >
             Send Message
