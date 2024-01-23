@@ -5,11 +5,7 @@ import MainContainer from "@containers/MainContainer";
 import Image from "next/image";
 import Profile from "@assets/Profile 2.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowTrendUp,
-  faUser,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowTrendUp } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import { experience, scrollToContact, info } from "@utils/indexUtils";
 import ContactForm from "@utils/ContactForm";

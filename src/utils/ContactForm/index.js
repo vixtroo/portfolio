@@ -51,7 +51,7 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit}>
       <div className="flex flex-col items-center p-4 mx-10 border-2 border-slate-500 rounded-xl">
         <h1 className="text-2xl font-bold tracking-wide">Email me</h1>
-        <div className="flex flex-col content-center justify-center p-4 gap-y-4">
+        <div className="flex flex-col flex-wrap content-center justify-center p-4 gap-y-4">
           <label htmlFor="name" style={{ position: "relative" }}>
             <input
               type="text"
@@ -93,17 +93,20 @@ const ContactForm = () => {
               }}
             />
           </label>
-          <textarea
-            placeholder="Message"
-            id="message"
-            name="message"
-            rows="4"
-            cols="30"
-            className="w-[280px] pl-3 py-[15px] rounded-xl"
-            onChange={handleChange}
-            value={formData.message}
-            required
-          ></textarea>
+          <label htmlFor="message" style={{ position: "relative" }}>
+            <textarea
+              placeholder="Message"
+              id="message"
+              name="message"
+              rows="4"
+              cols="30"
+              className="pl-3 py-[15px] rounded-xl"
+              style={{ paddingLeft: "15px", padding: "15px 0 15px 15px" }}
+              onChange={handleChange}
+              value={formData.message}
+              required
+            />
+          </label>
           <button
             className="flex flex-wrap content-center justify-center duration-100 delay-100 border-2 border-blue-300 hover:bg-blue-300 bg-slate-900 text-neutral-200 hover:border-slate-800 rounded-xl hover:text-zinc-900"
             type="submit"

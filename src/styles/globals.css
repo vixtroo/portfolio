@@ -44,6 +44,11 @@ body {
 
 #contact input, textarea{
   outline: 1px solid slategray;
+  width: 280px;
+}
+
+#contact label{
+  margin-bottom: 15px;
 }
 
 #contact input:focus, textarea:focus{
