@@ -7,8 +7,9 @@ import Profile from "@assets/Profile 2.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTrendUp } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-import { experience, scrollToContact, info } from "@utils/indexUtils";
+import { experience, scrollToContact, info, projects } from "@utils/indexUtils";
 import ContactForm from "@utils/ContactForm";
+import Link from "next/link";
 
 export default function Home() {
   const [downloaded, setDownloaded] = useState(false);
@@ -125,12 +126,40 @@ export default function Home() {
           </div>
         </section>
         <section
-          className="flex flex-col items-center justify-between w-full text-zinc-700 h-[500px] fade-in"
+          className="flex flex-col items-center justify-between w-full text-zinc-700 fade-in"
           id="projects"
           data-scroll
         >
           <div className="flex justify-center w-full my-20 font-mono text-4xl font-semibold">
             Projects
+          </div>
+          <div className="flex flex-col content-center justify-center w-full gap-y-12">
+            {projects.map((project, index) => (
+              <div
+                className="flex content-center justify-center w-full"
+                key={index}
+              >
+                <Link href={project.link} target="blank" className="relative">
+                  <Image
+                    src={project.img}
+                    width={850}
+                    height={0}
+                    className="drop-shadow-2xl rounded-xl"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 bg-black/50 rounded-xl hover:opacity-100">
+                    <p
+                      className="flex flex-wrap content-center justify-center w-full h-16 font-mono text-lg font-bold text-white bg-opacity-50 project-desc backdrop-filter bg-slate-800"
+                      style={{
+                        left: "-100%",
+                        transition: "left 0.3s ease-in-out",
+                      }}
+                    >
+                      {project.project}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
         </section>
         <section
