@@ -47,7 +47,7 @@ export const projects = [
     img: PUP,
   },
   {
-    project: "CascoKicks - Shoe Store Prototype",
+    project: "CasCo Kicks - Shoe Store Prototype",
     link: "https://cascokicks.vercel.app/",
     alt: "cascokicks image",
     img: Casco,
